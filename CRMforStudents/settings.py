@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+from bots.config import TOKEN
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,4 +133,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AIOROOT = os.path.join(BASE_DIR, 'bots')
-TELEGRAM_API_TOKEN = '5353862401:AAEu76LL6H7NVlGNfOVBbZ8T2xQ2HqMQFCE'
+TELEGRAM_API_TOKEN = TOKEN
