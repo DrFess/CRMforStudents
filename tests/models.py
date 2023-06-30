@@ -47,7 +47,7 @@ class StudentAnswers(models.Model):
 
 
 class TotalStudentAnswers(models.Model):
-    total_student_id = models.IntegerField(verbose_name='ID телеграм студента')
+    total_student_id = models.BigIntegerField(verbose_name='ID телеграм студента')
     total_theme = models.CharField(verbose_name='Тема теста(число)')
     total_correct_answer = models.IntegerField(verbose_name='Правильный ответ')
     total_student_answer = models.IntegerField(verbose_name='Ответ студента')

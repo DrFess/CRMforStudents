@@ -1,3 +1,4 @@
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -75,3 +76,16 @@ class GetStudentResultAPIView(APIView):
         ).values('student_answer', 'correct_answer')
         result = calculate_result(student_answers, length_test, 'student_answer', 'correct_answer')
         return Response({'result': result})
+
+
+@api_view(['GET'])
+def get_students_result_without_date(request):
+    length_total_test = Question.objects.all().count()
+    total_student_answers = TotalStudentAnswers.objects.filter(
+        total_student_id=request.data['total_student_id']
+    ).values('total_student_answer', 'total_correct_answer', 'total_date')
+    result = calculate_result(total_student_answers, length_total_test, 'total_student_answer', 'total_correct_answer')
+
+    # for item in total_student_answers:
+    #     print(item)
+    return Response({'result': result})

@@ -16,7 +16,7 @@ class GeolocationSerializer(serializers.Serializer):
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
-        fields = ('group_number',)
+        fields = ('group_number', 'id')
 
 
 class ProfileSerializer(serializers.ModelSerializer):

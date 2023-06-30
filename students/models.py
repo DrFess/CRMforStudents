@@ -12,7 +12,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=255, verbose_name='Имя')
     surname = models.CharField(max_length=255, verbose_name='Фамилия')
     group_number = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name='Группа и подгруппа')
-    telegram_id = models.IntegerField(primary_key=True, verbose_name='ID телеграм аккаунта')
+    telegram_id = models.BigIntegerField(primary_key=True, verbose_name='ID телеграм аккаунта')
 
     def __str__(self):
         return f'{self.name} {self.surname}'

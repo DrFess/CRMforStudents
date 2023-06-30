@@ -21,8 +21,8 @@ def get_all_profiles(request):
 
 @api_view(['GET'])
 def get_profiles_by_parameter(request):
-    parameter = request.GET.get('parameter')
-    profiles = Profile.objects.filter(parameter)
+    parameter = request.body.decode('utf-8')
+    profiles = Profile.objects.filter(group_number=int(parameter))
     serializer = ProfileSerializer(profiles, many=True)
     return Response(serializer.data)
 

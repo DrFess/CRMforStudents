@@ -6,19 +6,30 @@ from aiogram import Bot, Dispatcher, Router
 from aiogram.filters import Command
 from aiogram.types import Message
 
-from config import TOKEN
+from config import TOKEN, TEACHERS_ID
 from bots.keybords import kb
-from handlers import geolocations, test_for_students, registration, help, final_test_first_semester, edit_profile
+from handlers import (
+    geolocations,
+    test_for_students,
+    registration,
+    help,
+    final_test_first_semester,
+    edit_profile,
+    results_for_teacher,
+)
 
 
 router = Router()
 
 
-@router.message(Command(commands=["start"]))
+@router.message(Command(commands=["start", "menu"]))
 async def command_start_handler(message: Message):
     response = requests.get('http://localhost:8000/api/v1/get_field_values?data=telegram_id')
     if message.from_user.id in response.json():
-        await message.answer(f"Привет, <b>{message.from_user.full_name}!</b>", reply_markup=kb.menu)
+        if message.from_user.id in TEACHERS_ID:
+            await message.answer(f"Привет, <b>{message.from_user.full_name}!</b>", reply_markup=kb.menu_for_teacher)
+        else:
+            await message.answer(f"Привет, <b>{message.from_user.full_name}!</b>", reply_markup=kb.menu)
     else:
         await message.answer(f"Привет, незнакомец. Давай знакомиться", reply_markup=kb.registration)
 
@@ -32,7 +43,8 @@ async def main():
         registration.router,
         help.router,
         final_test_first_semester.router,
-        edit_profile.router
+        edit_profile.router,
+        results_for_teacher.router
     )
 
     # await bot.delete_webhook(drop_pending_updates=True)

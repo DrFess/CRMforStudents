@@ -24,16 +24,17 @@ from tests.views import (
     AddQuestionAPIView,
     AddStudentAnswerAPIView,
     TotalStudentAnswerAPIView,
-    GetStudentResultAPIView
+    GetStudentResultAPIView,
+    get_students_result_without_date,
 )
 
 from students.views import (
-    get_all_groups,
     geolocation_view,
     get_all_profiles,
     get_profiles_by_parameter,
     get_field_values,
     add_profile,
+    get_all_groups,
 )
 
 urlpatterns = [
@@ -51,5 +52,6 @@ urlpatterns = [
     path('api/v1/add_student_answer', AddStudentAnswerAPIView.as_view()),
     path('api/v1/total_student_answers', TotalStudentAnswerAPIView.as_view()),
     path('api/v1/get_student_result', GetStudentResultAPIView.as_view()),
+    path('api/v1/get_students_result_without_date', get_students_result_without_date)
     # path('bots/bot.py/', include('aiogram.contrib.fsm_storage.django_views')),
 ]

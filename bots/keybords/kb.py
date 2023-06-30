@@ -1,5 +1,12 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
+menu_items_for_teacher = [
+    [KeyboardButton(text='Геопозиция'),
+     KeyboardButton(text='Получить результат тестирования')],
+]
+
+menu_for_teacher = ReplyKeyboardMarkup(keyboard=menu_items_for_teacher, one_time_keyboard=True, resize_keyboard=True)
+
 menu_items = [
     [KeyboardButton(text='Геопозиция'),
      KeyboardButton(text='Тест по теме занятия')],
@@ -34,3 +41,15 @@ next_question = ReplyKeyboardMarkup(keyboard=[next_question_button], resize_keyb
 
 next2_question_button = [KeyboardButton(text='Следующий вопрос')]
 next2_question = ReplyKeyboardMarkup(keyboard=[next2_question_button], resize_keyboard=True)
+
+yes_or_no_button = [KeyboardButton(text='Да'), KeyboardButton(text='Нет')]
+yes_or_no = ReplyKeyboardMarkup(keyboard=[yes_or_no_button], one_time_keyboard=True, resize_keyboard=True)
+
+date_or_not_date_button = [KeyboardButton(text='По дате'), KeyboardButton(text='Без даты')]
+date_or_not_date = ReplyKeyboardMarkup(keyboard=[date_or_not_date_button], one_time_keyboard=True, resize_keyboard=True)
+
+show_calendar_button = [KeyboardButton(text='Покажи')]
+show_calendar = ReplyKeyboardMarkup(keyboard=[show_calendar_button], one_time_keyboard=True, resize_keyboard=True)
+
+show_answers_button = [KeyboardButton(text='Покажи')]
+show_answers = ReplyKeyboardMarkup(keyboard=[show_answers_button], one_time_keyboard=True, resize_keyboard=True)
